@@ -6,3 +6,9 @@
 	ff = only
 [init]
 	defaultBranch = master
+[commit]
+	gpgSign = true
+[gpg]
+	program = /opt/homebrew/bin/gpg
+[tag]
+	forceSignAnnotated = true

@@ -15,18 +15,19 @@ abbr -a cl "clear"
 #abbr -a fl "flutter"
 abbr -a gcm "git commit -m"
 abbr -a lad "la -d */ | sed 's/\/\//\//' | awk '{print \"\033[34m\" \$NF}'"
-abbr -a lll "tree -L 1 -d"
+abbr -a lll "tree -dL 1"
 abbr -a nst "npm run start"
 abbr -a ndev "npm run dev"
 abbr -a nn "nvim"
-abbr -a nvmu "nvm use"
+#abbr -a nvmu "nvm use"
 #abbr -a nodem "./node_modules/.bin/nodemon"
 abbr -a o "open ."
 #abbr -a p "python"
 #abbr -a py "pyenv activate"
-abbr -U v "vim"
-abbr -a vimrc "vim ~/.vimrc"
+abbr -a v "vim"
+#abbr -a vimrc "vim ~/.vimrc"
 abbr -a vif "nvim $CONFIG/fish/config.fish && source $CONFIG/fish/config.fish"
+abbr -a vic "nvim ~/.config/nvim/lua/redomar"
 
 #
 # Aliases
@@ -66,7 +67,7 @@ set -x EDITOR "/opt/homebrew/bin/nvim"
 #set -gx LDFLAGS "-L/usr/local/opt/zlib/lib $LDFLAGS"
 #set -gx CPPFLAGS "-I/usr/local/opt/zlib/include $CPPFLAGS"
 #set -gx PKG_CONFIG_PATH "/usr/local/opt/zlib/lib/pkgconfig $PKG_CONFIG_PATH"
-
+set -x PATH $HOME/.local/share/nvim/mason/bin $PATH
 #
 # Interacrive Funcrions
 #
@@ -85,3 +86,11 @@ function sgit -d "Use ssh to git clone"
     echo 'Cloning' $link
     git clone $link
 end
+
+# bass source ~/.nvm/nvm.sh --no-use ';' nvm use default > /dev/null 2>&1
+source ~/.config/fish/functions/ez_aliases.fish
+
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
