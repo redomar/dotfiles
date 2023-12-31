@@ -1,7 +1,7 @@
 [user]
 	name = Mohamed
 	email = mohamed12@live.co.uk
-	signingKey = BDA2B9D0BF84E6E8
+	signingkey = E0838DA31FA8210FDD472802B45047297675E6E7
 [pull]
 	ff = only
 [init]
