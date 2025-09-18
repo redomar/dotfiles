@@ -1,5 +1,5 @@
 [user]
-	name = Mohamed
+	name = Mohamed Omar
 	email = mohamed12@live.co.uk
 	signingkey = E0838DA31FA8210FDD472802B45047297675E6E7
 [pull]
@@ -12,3 +12,6 @@
 	program = /opt/homebrew/bin/gpg
 [tag]
 	forceSignAnnotated = true
+[gitbutler]
+	utmostDiscretion = 1
+	signCommits = true

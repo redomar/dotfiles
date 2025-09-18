@@ -83,15 +83,44 @@ end
 # Custom Functions
 #
 function sgit -d "Use ssh to git clone"
-    echo $argv | sed "s/https:\/\//git@/" | sed "s/\$/\.git/" | sed "s/com\//com:/" | read -l link
+    # Extract the base repository URL by discarding extra path beyond the repository name
+    echo $argv | sed -E "s|(https://github\.com/[^/]+/[^/]+).*|\1|" | 
+    # Convert HTTPS URL to SSH format
+    sed "s/https:\/\//git@/" | sed "s/\$/\.git/" | sed "s/com\//com:/" | read -l link
     echo 'Cloning' $link
     git clone $link
 end
+
+function sgito -d "Use ssh to git clone"
+    # Extract the base repository URL, convert HTTPS to SSH, replace domain, and append .git
+    echo $argv | \
+    sed -E "s|(https://github\.com/[^/]+/[^/]+).*|\1|" | \
+    sed "s/https:\/\//git@/" | \
+    sed "s/github/github-origin/" | \
+    sed "s/\.com//" | \
+    sed "s/\//:/" | \
+    sed "s/\$/\.git/" | read -l link
+    echo 'Cloning' $link
+    git clone $link
+end
+
 
 # bass source ~/.nvm/nvm.sh --no-use ';' nvm use default > /dev/null 2>&1
 source ~/.config/fish/functions/ez_aliases.fish
 
 
+# Zoxide
+zoxide init fish | source
+
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# pnpm
+set -gx PNPM_HOME "/Users/Mohamed/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+alias claude="/Users/Mohamed/.claude/local/claude"
